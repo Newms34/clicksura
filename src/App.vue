@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu">
+        <div class="navbar-start nav">
+           <router-link class='navbar-item' to="/">Home</router-link>
+            <router-link class='navbar-item' to="/about">About</router-link>
+        </div>
+      </div>
+    </nav>
+    {{testThing}}
+    <router-view />
   </div>
 </template>
 
 <style>
+@import '../node_modules/bulma/css/bulma.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
