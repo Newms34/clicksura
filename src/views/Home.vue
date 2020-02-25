@@ -1,29 +1,56 @@
 <template>
-  <div class='home'>
+  <div class="home">
     <!-- {{els}} -->
-    <div class='is-fullwidth columns'>
-      <div class='column is-one-fifth'></div>
-      <div class='column is-three-fifths columns is-multiline'>
-        <div class='notification is-link column is-half' v-bind:key='el' v-for='el in els'>{{el}}</div>
+    <div class="is-fullwidth columns">
+      <div class="column is-one-fifth"></div>
+      <div class="column is-three-fifths">
+        <div class="is-fullwidth columns is-multiline is-5 is-variable">
+          <buyCat
+            v-bind:title="el.title"
+            v-bind:initCost="el.initCost"
+            v-bind:costMult="el.costMult"
+            v-bind:desc="el.desc"
+            v-bind:key="el.title"
+            v-for="el in els"
+            v-on:click.native='doThing(el)'
+          />
+        </div>
       </div>
     </div>
-    <HelloWorld msg='Hallo skwerls' />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import buyCat from '@/components/buyCat.vue'
 
 export default {
   name: 'Home',
   data: function () {
     return {
-      els: ['Lab', 'Skritt', 'Golems', 'Krewe']
+      currFunds:100,
+      els: [
+        { title: 'cat1', initCost: 100, costMult: 1.34, desc: '(N/A)', currCost:null, numBought:0},
+        { title: 'cat2', initCost: 1, costMult: 1.05, desc: '(N/A)', currCost:null, numBought:0},
+        { title: 'cat3', initCost: 50, costMult: 1.2, desc: '(N/A)', currCost:null, numBought:0},
+        { title: 'cat4', initCost: 20, costMult: 1.2, desc: '(N/A)', currCost:null, numBought:0}
+      ]
+    }
+  },
+  created:function () {
+    this.els.forEach(el=>{
+      el.currCost = el.initCost;
+    })
+    console.log(this.els)
+  },
+  methods: {
+    doThing (el) {
+      if(this.currFunds<el.curr)
+      console.log('user clicked', el)
     }
   },
   components: {
-    HelloWorld
+    buyCat
   }
 }
 </script>

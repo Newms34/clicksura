@@ -8,7 +8,6 @@
         </div>
       </div>
     </nav>
-    {{testThing}}
     <router-view />
   </div>
 </template>
