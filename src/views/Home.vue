@@ -28,7 +28,7 @@ export default {
   name: 'Home',
   data: function () {
     return {
-      currFunds:100,
+      currFunds:10,
       els: [
         { title: 'cat1', initCost: 100, costMult: 1.34, desc: '(N/A)', currCost:null, numBought:0},
         { title: 'cat2', initCost: 1, costMult: 1.05, desc: '(N/A)', currCost:null, numBought:0},
@@ -40,12 +40,19 @@ export default {
   created:function () {
     this.els.forEach(el=>{
       el.currCost = el.initCost;
-    })
+    });
     console.log(this.els)
+    console.log('bulmabox',bulmabox)
+    // this.buyThing(this.els[0])
   },
   methods: {
-    doThing (el) {
-      if(this.currFunds<el.curr)
+    buyThing (el) {
+      if(this.currFunds<el.currCost){
+        return bulmabox.alert("Insuficient funds", "You don't have enough money to buy that.")
+      }
+      this.currFunds -= el.currCost;
+      el.currCost*=el.costMult;
+      el.numBought = 0;
       console.log('user clicked', el)
     }
   },
