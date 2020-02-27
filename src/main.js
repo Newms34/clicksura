@@ -1,9 +1,9 @@
 import Vue from 'vue'
+import * as bulmabox from '../node_modules/bulmabox/bulmabox.min.js'
 import App from './App.vue'
 import router from './router'
-import derp from 'bulmabox'
-console.log('derp',derp)
-// window.bulmabox = require('bulmabox')
+window.bulmabox = bulmabox
+
 
 // Vue.use(bulmabox)
 Vue.config.productionTip = false

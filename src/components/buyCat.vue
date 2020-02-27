@@ -1,6 +1,6 @@
 <template>
 <div class="column is-half">
-  <div class='notification item-btn'>{{title}} costs {{initCost}}, goes up {{costMult}}% each time, desc was {{desc}}</div>
+  <div class='notification item-btn'>{{title}} costs {{initCost}} initially, goes up {{costMult}}% each time, and currently costs {{currCost}}</div>
 </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
     title: String,
     initCost: Number,
     costMult: Number,
+    currCost: Number,
     desc: String
   }
 }
